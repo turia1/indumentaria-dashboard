@@ -62,6 +62,9 @@ export const users = pgTable("users", {
   role: userRoleEnum("role").notNull().default("seller"),
   locationId: text("location_id"),
   active: boolean("active").notNull().default(true),
+  // Campos requeridos por Auth.js DrizzleAdapter
+  emailVerified: timestamp("email_verified", { mode: "date" }),
+  image: text("image"),
   createdAt: timestamp("created_at").notNull().defaultNow(),
   lastLoginAt: timestamp("last_login_at"),
 })
